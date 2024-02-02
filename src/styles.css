@@ -1,0 +1,116 @@
+/* HEADER */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left > img {
+    object-fit: contain;
+    height: 30px;
+    margin-inline-start: 5px;
+    cursor: pointer;
+}
+
+.header-middle {
+    display: flex;
+    flex: 0.7;
+    align-items: center;
+    background-color: whitesmoke;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.header-middle .MuiSvgIcon-root {
+    color: gray;
+}
+
+.header-middle > input {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    background-color: transparent;
+    outline: none;
+    font-size: medium;
+
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+/* SIDEBAR */
+
+.sidebar > Button{
+    color: black;
+}
+
+.sidebar-compose {
+    margin-top: 15px !important;
+    margin-left: 10px !important;
+    margin-bottom: 15px !important;
+    text-transform: capitalize !important;
+    color: gray;
+    padding: 15px !important;
+    border-radius: 30px !important;
+    box-shadow: 0px 2px 5px -2px rgba(0, 0, 0, 0.75);
+}
+
+.sidebar-footer {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* SIDEBAR OPTIONS */
+.sidebarOptions {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 10px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    color: #818181;
+}
+
+.sidebarOptions .MuiSvgIcon-root {
+    padding: 5px;
+}
+
+.sidebarOptions > h3 {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.sidebarOptions > p {
+    display: none;
+    font-weight: 300;
+}
+.sidebar-active > p {
+    display: inline;
+}
+.sidebarOptions:hover > p {
+    display: inline;
+}
+
+.sidebarOptions:hover, 
+.sidebarOptions:hover > p,
+.sidebarOptions > h3:hover,
+.sidebar-active,
+.sidebar-active > p ,
+.sidebar-active > h3 {
+    background-color: #fcecec;
+    color: #c04b37;
+    font-weight: 800 !important;
+    cursor: pointer;
+}
