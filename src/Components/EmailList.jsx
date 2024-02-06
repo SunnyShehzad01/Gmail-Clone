@@ -50,7 +50,7 @@ const EmailList = () => {
         {
           emailList.map((mail, index) => {
             return (
-              <EmailRow key={index} title={mail.title} subject={mail.subject} description={mail.description} time={mail.time} />
+              <EmailRow key={index} id={index} title={mail.title} subject={mail.subject} description={mail.description} time={mail.time} />
             )
           })
         }

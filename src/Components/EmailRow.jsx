@@ -2,10 +2,12 @@ import { LabelImportantOutlined, StarBorderOutlined } from '@mui/icons-material'
 import { Checkbox, IconButton } from '@mui/material'
 import React from 'react'
 import '../styles.css'
+import { useNavigate } from 'react-router-dom'
 
 const EmailRow = ({id, title, subject, description, time}) => {
+    const navigate = useNavigate()
   return (
-    <div className='emailRow'>
+    <div onClick={ () => navigate(`/mail`)} className='emailRow'>
         <div className="emailrow-options">
             <Checkbox />
             <IconButton>
@@ -24,15 +26,15 @@ const EmailRow = ({id, title, subject, description, time}) => {
             <h4>
                 {subject}
                 <span className='emailrow-description'>
-                    {description}
+                    - {description}
                 </span>
             </h4>
             
         </div>
 
-        <div className="emailrow-time">
+        <p className="emailrow-time">
             {time}
-        </div>
+        </p>
     </div>
   )
 }
