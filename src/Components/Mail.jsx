@@ -28,7 +28,22 @@ const Mail = () => {
         </div>
       </div>
 
-      <h1>Sunny Shehzad</h1>
+      <div className="mail-body">
+        <div className="mail-body-header">
+          <h2>Subject</h2>
+          <LabelImportant className='mail-important-icon' />
+          <p>Title</p>
+          <p className='mail-time'>10pm</p>
+        </div>
+
+        <div className="mail-message">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, esse eum necessitatibus ab eius delectus, officia eligendi blanditiis nesciunt numquam reiciendis. Doloremque porro libero doloribus culpa ut, laboriosam perferendis numquam voluptates impedit ipsam quos, sit est quibusdam expedita sed reprehenderit provident consequatur dicta, necessitatibus molestias eveniet itaque! Laborum, reprehenderit! Ullam neque amet dicta fugiat pariatur non dolorum explicabo dolore, alias placeat cupiditate rerum unde veritatis consectetur tempore dolorem sapiente numquam quod aperiam. Pariatur doloremque voluptas vitae harum autem illo veniam quos quibusdam non? Fuga, ullam quas? Voluptatem earum adipisci reiciendis maxime pariatur, accusantium molestiae tempora nulla ipsum eaque quam fugiat.
+          </p>
+        </div>
+      </div>
+
+
     </div>
   )
 }
