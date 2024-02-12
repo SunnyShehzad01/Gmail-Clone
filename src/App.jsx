@@ -6,8 +6,13 @@ import Mail from './Components/Mail'
 import EmailList from './Components/EmailList'
 import { Email } from '@mui/icons-material'
 import SendMail from './Components/SendMail'
+import { useSelector } from 'react-redux'
+import { selectMail } from './features/mailSlice'
 
 function App() {
+
+  const sendMessageIsOpen = useSelector(selectMail)
+
   return (
     <BrowserRouter>
     
@@ -24,7 +29,7 @@ function App() {
         </div>
 
         <div className="send-mail">
-          <SendMail />
+          {sendMessageIsOpen && <SendMail />}
         </div>
         </div>
 

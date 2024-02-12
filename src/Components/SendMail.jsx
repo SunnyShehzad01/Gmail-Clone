@@ -3,8 +3,11 @@ import { Button } from '@mui/material'
 import React from 'react'
 import '../styles.css'
 import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { closeSendMessage } from '../features/mailSlice'
 
 const SendMail = () => {
+    const dispatch = useDispatch()
     const { register, handleSubmit, watch, errors } = useForm({
         defaultValues: {
             to: '',
@@ -19,13 +22,15 @@ const SendMail = () => {
     <div className='sendMail'>
         <div className="sendMail-header">
             <h3>New Message</h3>
-            <Close className='sendMail-close'/>
+            <div onClick={() => dispatch(closeSendMessage())}>
+                <Close className='sendMail-close'/ >
+            </div>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
             <input 
                 name='to' 
-                type="text" 
+                type="email" 
                 placeholder='To' 
                 className='sendMail-to' 
                 {...register("to", { required: true })}  
