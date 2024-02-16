@@ -5,9 +5,12 @@ import '../styles.css'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { closeSendMessage } from '../features/mailSlice'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+import { db } from '../firebase'
 
 const SendMail = () => {
     const dispatch = useDispatch()
+    const colRef = collection(db, 'emails')
     const { register, handleSubmit, watch, errors } = useForm({
         defaultValues: {
             to: '',
@@ -15,15 +18,24 @@ const SendMail = () => {
             message: ''
         }
     })
-    const onSubmit = (data) => {
-        console.log(data);
+    const onSubmit = (formData) => {
+
+        addDoc(colRef, {
+            to: formData.to,
+            subject: formData.subject,
+            message: formData.message,
+            timestamp: serverTimestamp()
+        }).then(() => {
+            dispatch(closeSendMessage())
+        }).catch(error => console.log(error))
+
     }
   return (
     <div className='sendMail'>
         <div className="sendMail-header">
             <h3>New Message</h3>
             <div onClick={() => dispatch(closeSendMessage())}>
-                <Close className='sendMail-close'/ >
+                <Close className='sendMail-close' />
             </div>
         </div>
 
@@ -42,7 +54,6 @@ const SendMail = () => {
                 className='sendMail-subject' 
                 {...register("subject", { required: true })} 
             />
-            {/* <input type="text" placeholder='CC' className='sendMail-cc' /> */}
             <input 
                 name='message' 
                 type="text" 

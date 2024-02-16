@@ -3,9 +3,13 @@ import { IconButton } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles.css'
+import { useSelector } from 'react-redux'
+import { selectOpenMail } from '../features/mailSlice'
 
 const Mail = () => {
   const navigate = useNavigate()
+  const mailDetails = useSelector(selectOpenMail)
+
   return (
     <div className='mail'>
       <div className="mail-tools">
@@ -30,16 +34,14 @@ const Mail = () => {
 
       <div className="mail-body">
         <div className="mail-body-header">
-          <h2>Subject</h2>
+          <h2>{mailDetails?.subject}</h2>
           <LabelImportant className='mail-important-icon' />
-          <p>Title</p>
-          <p className='mail-time'>10pm</p>
+          <p>{mailDetails?.title}</p>
+          <p className='mail-time'>{mailDetails?.time}</p>
         </div>
 
         <div className="mail-message">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, esse eum necessitatibus ab eius delectus, officia eligendi blanditiis nesciunt numquam reiciendis. Doloremque porro libero doloribus culpa ut, laboriosam perferendis numquam voluptates impedit ipsam quos, sit est quibusdam expedita sed reprehenderit provident consequatur dicta, necessitatibus molestias eveniet itaque! Laborum, reprehenderit! Ullam neque amet dicta fugiat pariatur non dolorum explicabo dolore, alias placeat cupiditate rerum unde veritatis consectetur tempore dolorem sapiente numquam quod aperiam. Pariatur doloremque voluptas vitae harum autem illo veniam quos quibusdam non? Fuga, ullam quas? Voluptatem earum adipisci reiciendis maxime pariatur, accusantium molestiae tempora nulla ipsum eaque quam fugiat.
-          </p>
+          <p>{mailDetails?.description}</p>
         </div>
       </div>
 
