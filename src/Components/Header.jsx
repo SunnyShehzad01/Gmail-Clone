@@ -5,9 +5,24 @@ import { Avatar, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { Apps, ArrowDropDown, Notifications } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, selectUser } from '../features/userSlice';
+import { getAuth, signOut } from 'firebase/auth';
 
 const Header = () => {
     const navigate = useNavigate()
+    const user = useSelector(selectUser)
+    const dispatch = useDispatch()
+    const auth = getAuth()
+
+    const signingOut = () => {
+        signOut(auth)
+        .then(()=>{
+            dispatch(logout())
+        })
+        .catch(error => console.log(error))
+    }
+
   return (
     <div className='header'>
         <div className="header-left">
@@ -28,7 +43,10 @@ const Header = () => {
         <div className="header-right">
             <IconButton > <Apps /> </IconButton>
             <IconButton> <Notifications /> </IconButton>
-            <Avatar />
+            <div className="signout">
+                <Avatar onClick={signingOut} src={user?.photoUrl} />
+                <p>SignOut</p>
+            </div>
         </div>
     </div>
   )
